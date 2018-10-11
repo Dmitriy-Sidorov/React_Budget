@@ -112,17 +112,17 @@ class App extends Component {
         moment(transactionDate, 'DD.MM.YYYY').isSame(date, 'month')
     );
 
-    const remainderMoney =
-      currentMonthTransactions.reduce(
-        (acc, transaction) =>
-          transaction.sum > 0 ? transaction.sum + acc : acc,
-        0
-      ) +
-      currentMonthTransactions.reduce(
-        (acc, transaction) =>
-          transaction.sum < 0 ? transaction.sum + acc : acc,
-        0
-      );
+    const remainderMoney = currentMonthTransactions.reduce(
+      (acc, transaction) => transaction.sum + acc,
+      0
+    );
+
+    const a = transactions.reduce(
+      (acc, transaction) => transaction.sum + acc,
+      0
+    );
+
+    console.log(a);
 
     return remainderMoney;
   };
