@@ -69,6 +69,10 @@ td:nth-child(2) {
   text-align: right;
 }
 
+.expanse__table tr:nth-child(1) td {
+  text-align: left;
+}
+
 p {
   margin: 0;
 }

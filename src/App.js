@@ -27,7 +27,6 @@ const DateButton = styled.button`
 const DateLine = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 `;
 
 const Link = styled.span`
@@ -200,7 +199,7 @@ class App extends Component {
     localStorage.clear();
   };
 
-  expanse = () => {
+  transactionMonth = () => {
     const { transactions, date } = this.state;
 
     const currentMonthTransactions = transactions.filter(
@@ -216,7 +215,6 @@ class App extends Component {
     let dates = '';
     let datesArray = [];
     let arrayTransactionDay = [];
-    let arrayincomeDay = [];
 
     for (let i = 0; i < currentMonthTransactions.length; i++) {
       let day = currentMonthTransactions[i].date;
@@ -294,7 +292,7 @@ class App extends Component {
               Прогнозируемый остаток на {date.format('MMMM')}:{' '}
               {this.remainder()} ₽
             </p>
-            <DateLine>
+            <DateLine className="my-3">
               <p>{date.format('DD.MM.YYYY')}</p>
               <DateButton onClick={this.handleSubtractDay}>-</DateButton>
               <DateButton onClick={this.handleAddDay}>+</DateButton>
@@ -305,7 +303,14 @@ class App extends Component {
               <p>Транзакции за {date.format('MMMM')}</p>
 
               <Table className="expanse__table">
-                <tbody>{this.expanse()}</tbody>
+                <tbody>
+                  <tr>
+                    <td>Дата</td>
+                    <td>Расходы</td>
+                    <td>Доходы</td>
+                  </tr>
+                  {this.transactionMonth()}
+                </tbody>
               </Table>
             </div>
           </Col>
