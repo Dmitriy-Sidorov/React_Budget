@@ -109,20 +109,14 @@ class App extends Component {
 
     const currentMonthTransactions = transactions.filter(
       ({ date: transactionDate }) =>
-        moment(transactionDate, 'DD.MM.YYYY').isSame(date, 'month')
+        moment(transactionDate, 'DD.MM.YYYY').isBefore(date, 'date') ||
+        moment(transactionDate, 'DD.MM.YYYY').isSame(date, 'date')
     );
 
     const remainderMoney = currentMonthTransactions.reduce(
       (acc, transaction) => transaction.sum + acc,
       0
     );
-
-    const a = transactions.reduce(
-      (acc, transaction) => transaction.sum + acc,
-      0
-    );
-
-    console.log(a);
 
     return remainderMoney;
   };
